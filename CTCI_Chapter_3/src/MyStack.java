@@ -1,15 +1,15 @@
 public class MyStack {
-	private MyNode head;
 	private int depth;
 	public static final int VOLUME = 50;
+	private int[] contents;
 	
 	public MyStack() {
-		head = null;
-		depth = 0;
+		contents = new int[MyStack.VOLUME];
 	}
 	
 	public MyStack(int value) {
-		head = new MyNode(value);
+		contents = new int[MyStack.VOLUME];
+		contents[0] = value;
 		depth = 1;
 	}
 	
@@ -21,19 +21,17 @@ public class MyStack {
 		return (depth == MyStack.VOLUME);
 	}
 	
-	public MyNode push(int value) {
-		if (isFull()) return head;
-		head = head.appendHead(value);
+	public int push(int value) {
+		if (isFull()) return (-value);
+		contents[depth] = value;
 		++depth;
-		return head;
+		return value;
 	}
 	
-	public MyNode pop() {
-		if (isEmpty()) return null;
-		MyNode orphan = head;
-		head = head.getNext();
+	public int pop() {
+		if (isEmpty()) return -1;
 		--depth;
-		return orphan;
+		return contents[depth];
 	}
 	
 	public int length() {
