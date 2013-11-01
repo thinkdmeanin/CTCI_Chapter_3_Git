@@ -1,7 +1,7 @@
 public class MyStack {
 	private MyNode head;
 	private int depth;
-	static final int VOLUME = 50;
+	public static final int VOLUME = 50;
 	
 	public MyStack() {
 		head = null;
